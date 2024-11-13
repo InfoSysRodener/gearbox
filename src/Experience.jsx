@@ -2,7 +2,7 @@ import { OrbitControls , Html } from '@react-three/drei'
 import { Perf } from 'r3f-perf'
 import { Model as GearModels } from './components/model'
 import { useState } from 'react';
-
+import { useControls, Leva } from 'leva';
 
 export default function Experience()
 {
@@ -11,14 +11,28 @@ export default function Experience()
 
     const handleTriggerAnimation = () => {
         setIsAnimationActive((prev) => !prev);
-       
     };
+
+    const inputPosition = {
+        x:0,
+        y:0.9,
+        z:-0.1
+    }
+
+    const { x, y, z} = useControls({
+        x: { value: inputPosition.x, min: -10, max: 10, step: 0.1 },
+        y: { value: inputPosition.y, min: -10, max: 10, step: 0.1 },
+        z: { value: inputPosition.z, min: -10, max: 10, step: 0.1 },
+    })
+ 
 
     return <>
         
         <axesHelper />
 
         <Perf position="top-left" />
+
+        {/* <Leva/> */}
 
         <OrbitControls makeDefault />
 
@@ -29,8 +43,8 @@ export default function Experience()
         <GearModels isAnimationsActive={isAnimationActive}/>
 
         <Html
-            position={[0, 1, 0.1]} 
-            distanceFactor={5}   
+            position={[x,y,z]} 
+            distanceFactor={6}   
             transform              
             // occlude     
             pointerEvents="auto"        
