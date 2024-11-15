@@ -9,7 +9,7 @@ export function Model(props) {
   const group = useRef()
   const { nodes, materials, animations } = useGLTF('/gears anim.glb')
   const { actions } = useAnimations(animations, group)
-
+  console.log('actions',actions);
   console.log(props);
   useEffect(() => {
     if (actions && props.isAnimationsActive) {

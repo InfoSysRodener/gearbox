@@ -15,14 +15,14 @@ export default function Experience()
 
     const inputPosition = {
         x:0,
-        y:0.9,
-        z:-0.1
+        y:0.90,
+        z:-0.10
     }
 
     const { x, y, z} = useControls({
         x: { value: inputPosition.x, min: -10, max: 10, step: 0.1 },
         y: { value: inputPosition.y, min: -10, max: 10, step: 0.1 },
-        z: { value: inputPosition.z, min: -10, max: 10, step: 0.1 },
+        z: { value: inputPosition.z, min: -10, max: 10, step: 0.001 },
     })
  
 
@@ -46,7 +46,7 @@ export default function Experience()
             position={[x,y,z]} 
             distanceFactor={6}   
             transform              
-            // occlude     
+            occlude="blending" 
             pointerEvents="auto"        
         >
             <input type="text" placeholder="Enter text here" style={{index:999}}/>
